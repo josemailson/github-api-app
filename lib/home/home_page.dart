@@ -186,9 +186,10 @@ class _HomePageState extends State<HomePage> {
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: const [
                                     Text('Repository Name'),
-                                    Text('Repository Link'),
+                                    Text('Repository Link:'),
                                     Text('Repository/Link'),
                                   ],
                                 ),
