@@ -1,6 +1,6 @@
-# github_api_interface
+# GitHub API App
 
-A new Flutter project.
+An flutter App conected with GitHub API, so you can search a GitHub username and returns some user's informations.
 
 ## Getting Started
 
@@ -15,4 +15,11 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-Test
+## Authors
+
+- [@josemailson](https://github.com/josemailson)
+
+
+## Demo
+
+![img](https://github.com/josemailson/github-api-app/blob/main/lib/resources/images/demo.gif?raw=true) 
