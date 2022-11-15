@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:github_api_interface/resources/colors.dart';
+import 'package:github_api_interface/resources/text_style.dart';
 
 import 'home_controller.dart';
 import 'home_state.dart';
@@ -26,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-        backgroundColor: const Color(0xFFF5F5F5),
+        backgroundColor: AppColors.graySuperLight,
         appBar: AppBar(title: const Text('GitHub Profile')),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -43,11 +45,11 @@ class _HomePageState extends State<HomePage> {
                         hintText: 'Digite o username para pesquisar',
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(width: 2, color: Colors.blueAccent),
+                              BorderSide(width: 2, color: AppColors.blueLight),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(width: 2, color: Colors.greenAccent),
+                          borderSide: BorderSide(
+                              width: 3, color: AppColors.blueVibrant),
                         ),
                       ),
                     )),
@@ -109,14 +111,26 @@ class _HomePageState extends State<HomePage> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(state.homeModel.name),
+                                                  Text(state.homeModel.name,
+                                                      style: AppTextStyles
+                                                          .applicationTitle),
                                                   Text(
-                                                      'Username: ${state.homeModel.login}'),
-                                                  const Text('Company:'),
+                                                      'Username: ${state.homeModel.login}',
+                                                      style: AppTextStyles
+                                                          .example1),
+                                                  const Text('Company:',
+                                                      style: AppTextStyles
+                                                          .example1),
                                                   Text(
-                                                      'Location: ${state.homeModel.location}'),
-                                                  const Text('Blog:'),
-                                                  Text(state.homeModel.blog),
+                                                      'Location: ${state.homeModel.location}',
+                                                      style: AppTextStyles
+                                                          .example1),
+                                                  const Text('Blog:',
+                                                      style: AppTextStyles
+                                                          .example1),
+                                                  Text(state.homeModel.blog,
+                                                      style: AppTextStyles
+                                                          .example1),
                                                 ],
                                               ),
                                             ],
@@ -133,30 +147,40 @@ class _HomePageState extends State<HomePage> {
                                       children: [
                                         Column(
                                           children: [
-                                            const Text('Followers'),
-                                            Text(
-                                                '${state.homeModel.followers}'),
+                                            const Text('Followers',
+                                                style:
+                                                    AppTextStyles.filterTitle),
+                                            Text('${state.homeModel.followers}',
+                                                style: AppTextStyles.example1),
                                           ],
                                         ),
                                         Column(
                                           children: [
-                                            const Text('Following'),
-                                            Text(
-                                                '${state.homeModel.following}'),
+                                            const Text('Following',
+                                                style:
+                                                    AppTextStyles.filterTitle),
+                                            Text('${state.homeModel.following}',
+                                                style: AppTextStyles.example1),
                                           ],
                                         ),
                                         Column(
                                           children: [
-                                            const Text('Gists'),
+                                            const Text('Gists',
+                                                style:
+                                                    AppTextStyles.filterTitle),
                                             Text(
-                                                '${state.homeModel.public_gists}'),
+                                                '${state.homeModel.public_gists}',
+                                                style: AppTextStyles.example1),
                                           ],
                                         ),
                                         Column(
                                           children: [
-                                            const Text('Repos'),
+                                            const Text('Repos',
+                                                style:
+                                                    AppTextStyles.filterTitle),
                                             Text(
-                                                '${state.homeModel.public_repos}'),
+                                                '${state.homeModel.public_repos}',
+                                                style: AppTextStyles.example1),
                                           ],
                                         ),
                                       ],
@@ -167,11 +191,12 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const Padding(
                                 padding: EdgeInsets.all(8.0),
-                                child: Text('Repositories')),
+                                child: Text('Repositories',
+                                    style: AppTextStyles.filterTitle)),
                             Container(
                               margin: const EdgeInsets.only(
                                   left: 12, right: 12, bottom: 12),
-                              height: 150,
+                              height: 160,
                               child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 itemCount: state.repositoryModelList.length,
@@ -187,14 +212,26 @@ class _HomePageState extends State<HomePage> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              const Text('Repository Name:'),
-                                              Text(state
-                                                  .repositoryModelList[index]
-                                                  .full_name),
-                                              const Text('Repository Link:'),
-                                              Text(state
-                                                  .repositoryModelList[index]
-                                                  .html_url),
+                                              const Text('Repository Name:',
+                                                  style:
+                                                      AppTextStyles.repoTitle),
+                                              Text(
+                                                  state
+                                                      .repositoryModelList[
+                                                          index]
+                                                      .full_name,
+                                                  style: AppTextStyles
+                                                      .description),
+                                              const Text('Repository Link:',
+                                                  style:
+                                                      AppTextStyles.repoTitle),
+                                              Text(
+                                                  state
+                                                      .repositoryModelList[
+                                                          index]
+                                                      .html_url,
+                                                  style: AppTextStyles
+                                                      .description),
                                             ],
                                           ),
                                         ),
@@ -206,11 +243,12 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const Padding(
                                 padding: EdgeInsets.all(8.0),
-                                child: Text('Starred')),
+                                child: Text('Starred',
+                                    style: AppTextStyles.filterTitle)),
                             Container(
                               margin: const EdgeInsets.only(
                                   left: 12, right: 12, bottom: 12),
-                              height: 150,
+                              height: 160,
                               child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
                                 itemCount: state.starredModelList.length,
@@ -226,12 +264,22 @@ class _HomePageState extends State<HomePage> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              const Text('Repository Name:'),
-                                              Text(state.starredModelList[index]
-                                                  .full_name),
-                                              const Text('Repository Link:'),
-                                              Text(state.starredModelList[index]
-                                                  .html_url),
+                                              const Text('Repository Name:',
+                                                  style:
+                                                      AppTextStyles.repoTitle),
+                                              Text(
+                                                  state.starredModelList[index]
+                                                      .full_name,
+                                                  style: AppTextStyles
+                                                      .description),
+                                              const Text('Repository Link:',
+                                                  style:
+                                                      AppTextStyles.repoTitle),
+                                              Text(
+                                                  state.starredModelList[index]
+                                                      .html_url,
+                                                  style: AppTextStyles
+                                                      .description),
                                             ],
                                           ),
                                         ),
