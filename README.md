@@ -19,7 +19,6 @@ samples, guidance on mobile development, and a full API reference.
 
 - [@josemailson](https://github.com/josemailson)
 
-
 ## Demo
 
-![img](https://github.com/josemailson/github-api-app/blob/main/lib/resources/images/demo.gif?raw=true) 
+![img](https://github.com/josemailson/github-api-app/blob/main/lib/resources/images/demo2.gif?raw=true)
