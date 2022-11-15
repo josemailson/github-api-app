@@ -10,8 +10,10 @@ class HomeLoadingState implements HomeState {}
 
 class HomeSuccessState implements HomeState {
   final HomeModel homeModel;
-  final RepositoryModel repositoryModel;
-  HomeSuccessState(this.homeModel, this.repositoryModel);
+  final List<RepositoryModel> repositoryModelList;
+  final List<RepositoryModel> starredModelList;
+  HomeSuccessState(
+      this.homeModel, this.repositoryModelList, this.starredModelList);
 }
 
 class HomeErrorState implements HomeState {

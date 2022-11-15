@@ -17,9 +17,17 @@ class HomeController {
           await dio.get('https://api.github.com/users/$username');
       final responseRepository =
           await dio.get('https://api.github.com/users/$username/repos');
+      final responseStarred =
+          await dio.get('https://api.github.com/users/$username/starred');
       final homeModel = HomeModel.fromMap(responseUser.data);
-      final repositoryModel = RepositoryModel.fromMap(responseRepository.data);
-      homeState.value = HomeSuccessState(homeModel, repositoryModel);
+      final repositoryModel = List.from(responseRepository.data);
+      final starredModel = List.from(responseStarred.data);
+      final repositoryModelList =
+          repositoryModel.map((e) => RepositoryModel.fromMap(e)).toList();
+      final starredModelList =
+          starredModel.map((e) => RepositoryModel.fromMap(e)).toList();
+      homeState.value =
+          HomeSuccessState(homeModel, repositoryModelList, starredModelList);
     } catch (e) {
       homeState.value = HomeErrorState(e.toString());
     }
